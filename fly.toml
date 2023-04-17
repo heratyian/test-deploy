@@ -1,13 +1,10 @@
-# fly.toml file generated for test-deploy-1 on 2023-04-14T16:30:05Z
+# fly.toml file generated for test-deploy-monday on 2023-04-17T19:50:14Z
 
-app = "test-deploy-1"
+app = "test-deploy-monday"
 kill_signal = "SIGINT"
 kill_timeout = 5
 primary_region = "ord"
 processes = []
-
-[build]
-  image = "flyio/hellofly:latest"
 
 [env]
 
@@ -15,8 +12,10 @@ processes = []
   auto_rollback = true
 
 [[services]]
+  autostart = true
+  autostop = false
   http_checks = []
-  internal_port = 8080
+  internal_port = 3000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
@@ -39,3 +38,7 @@ processes = []
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
