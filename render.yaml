@@ -1,11 +1,13 @@
 databases:
   - name: testdeploy
+    plan: free
     databaseName: testdeploy
     user: testdeploy
 
 services:
   - type: web
     name: testdeploy
+    plan: free
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
